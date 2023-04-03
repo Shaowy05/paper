@@ -1,0 +1,9 @@
+[package]
+name = "paper"
+author = "James Shao"
+version = "1.0.0"
+about = "A lightweight, simplistic, terminal-based text editor for taking basic notes"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.2.1", features = ["derive"] }
