@@ -1,6 +1,25 @@
-use clap::Parser;
+use crossterm::{
+    terminal,
+    event
+};
 
-use paper::{Cli, Commands::*};
+use crossterm::event:: {
+    Event,
+    KeyCode,
+    KeyEvent
+};
+
+use clap::Parser;
+use std::string::ParseError;
+use std::{ io, io::Read };
+
+use paper::{
+    Cli,
+    Commands::*,
+    Paper,
+    Line,
+    Editor
+};
 
 fn main() {
 
@@ -21,4 +40,19 @@ fn main() {
     else {
         println!("No command passed in!");
     }
+
+    let mut paper: Paper = Paper::new();
+    paper.add_line_from(vec![
+        'h', 'e', 'l', 'l', 'o'
+    ]);
+    paper.add_line_from(vec![
+        'w', 'o', 'r', 'l', 'd'
+    ]);
+
+    // Instantiating the Editor
+    let editor = Editor::new(paper);
+
+    // Running the Editor
+    editor.run();
+
 }
